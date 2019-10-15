@@ -1,4 +1,13 @@
+,DS_Store
+
 downloads/
 secrets/
+state/
+
+*.tfstate.*
+*.tfstate
+*.tfvars
+*.terraform
 
 .envrc
+*-config

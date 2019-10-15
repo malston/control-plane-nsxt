@@ -1,0 +1,15 @@
+dns:
+ntp:
+gateway:
+network_name: control-plane
+opsman_host_name:
+opsman_netmask: 255.255.255.0
+opsman_private_ip:
+opsman_vm_name: control-plane-opsman
+vsphere_datacenter:
+vsphere_datastore:
+vsphere_folder: control-plane-vms
+vsphere_host_name:
+vsphere_resource_pool: control-plane
+vsphere_cluster:
+glob: "*.ova"
