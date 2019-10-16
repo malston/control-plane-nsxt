@@ -1,0 +1,55 @@
+properties-configuration:
+  iaas_configuration:
+    vcenter_host: ((vsphere_host_name))
+    vcenter_username: ((vsphere_user))
+    vcenter_password: ((vsphere_password))
+    datacenter: ((vsphere_datacenter))
+    ssl_verification_enabled: false
+    disk_type: thin
+    ephemeral_datastores_string: ((vsphere_datastore))
+    persistent_datastores_string: ((vsphere_datastore))
+    bosh_vm_folder: ((vsphere_folder))
+    bosh_template_folder: ((bosh_template_folder))
+    bosh_disk_path: ((bosh_disk_path))
+    nsx_networking_enabled: true
+    nsx_mode: nsx-t
+    nsx_address: ((nsx_host))
+    nsx_username: ((nsx_admin_user))
+    nsx_password: ((nsx_admin_password))
+    nsx_ca_certificate: ((nsx_ca_cert))
+  director_configuration:
+    ntp_servers_string: ((ntp))
+    resurrector_enabled: true
+    post_deploy_enabled: ((bosh_post_deploy_enabled))
+az-configuration:
+- name: ((availability_zone))
+  clusters:
+  - cluster: ((vsphere_cluster))
+    resource_pool: ((vsphere_resource_pool))
+network-assignment:
+  singleton_availability_zone:
+    name: ((availability_zone))
+  network:
+    name: control-plane
+networks-configuration:
+  icmp_checks_enabled: false
+  networks:
+  - name: control-plane
+    service_network: false
+    subnets:
+    - iaas_identifier: ((network_name))
+      cidr: ((internal_cidr))
+      reserved_ip_ranges: ((reserved_ip_ranges))
+      dns: ((dns))
+      gateway: ((gateway))
+      availability_zone_names:
+      - ((availability_zone))
+vmextensions-configuration:
+- name: concourse-lb
+  cloud_properties:
+    nsxt:
+      ns_groups: ["concourse_web_ns_group", "concourse_uaa_ns_group", "concourse_credhub_ns_group"]
+- name: minio-lb
+  cloud_properties:
+    nsxt:
+      ns_groups: ["minio_ns_group"]

@@ -1,0 +1,22 @@
+opsman-configuration:
+  vsphere:
+    vcenter:
+      url: ((vsphere_host_name))
+      username: ((vsphere_user))
+      password: ((vsphere_password))
+      datastore: ((vsphere_datastore))
+      datacenter: ((vsphere_datacenter))
+      resource_pool: ((opsman_resource_pool))
+      folder: ((vsphere_folder))
+      insecure: 1                            # 1 insecure, 0 secure
+    disk_type: thin                          # example: thin|thick
+    private_ip: ((opsman_private_ip))
+    dns: ((dns))
+    ntp: ((ntp))                     # example: ntp.ubuntu.com
+    ssh_password: ((ssh_password))
+    ssh_public_key: ((ssh_public_key))
+    hostname: ((opsman_host_name))
+    network: ((network_name))                 # vcenter network to deploy to
+    netmask: ((opsman_netmask))
+    gateway: ((gateway))
+    vm_name: ((opsman_vm_name))
