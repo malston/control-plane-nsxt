@@ -23,7 +23,6 @@ export DATASTORE=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml 
 export NETWORK=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml --path /network_name)
 export VSPHERE_HOST=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml --path /vsphere_host_name)
 export OPSMAN_PRIVATE_IP=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml --path /opsman_private_ip)
-export OPSMAN_HOST_NAME=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml --path /opsman_host_name)
 export OPSMAN_NETMASK=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml --path /opsman_netmask)
 export OPSMAN_GATEWAY=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml --path /gateway)
 export NTP=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml --path /ntp)
@@ -52,7 +51,7 @@ govc import.spec ./downloads/ops-manager-vsphere-*.ova \
    | jq --arg dns "${DNS}" -r '(.PropertyMapping[] | select(.Key=="DNS").Value) |=$dns' \
    | jq --arg ntp "${NTP}" -r '(.PropertyMapping[] | select(.Key=="ntp_servers").Value) |=$ntp' \
    | jq --arg ssh "${SSH_PUBLIC_KEY}" -r '(.PropertyMapping[] | select(.Key=="public_ssh_key").Value) |=$ssh' \
-   | jq --arg hostname "${OPSMAN_HOST_NAME}" -r '(.PropertyMapping[] | select(.Key=="custom_hostname").Value) |=$hostname' \
+   | jq --arg hostname "${OPSMAN_VM_NAME}" -r '(.PropertyMapping[] | select(.Key=="custom_hostname").Value) |=$hostname' \
    | jq --arg name "${OPSMAN_VM_NAME}" -r '.Name=$name' \
    | jq '.PowerOn=true' \
    > /tmp/opsman_ova.json
