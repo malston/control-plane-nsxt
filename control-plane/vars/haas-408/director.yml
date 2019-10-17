@@ -1,8 +1,7 @@
 availability_zone: AZ1
 bosh_disk_path: control-plane-disks
-bosh_post_deploy_enabled: false
+bosh_post_deploy_enabled: true
 bosh_template_folder: control-plane-templates
 internal_cidr: 192.168.4.0/24
 reserved_ip_ranges: 192.168.4.1-192.168.4.10
-nsx_host:
-nsx_ca_cert:
+nsx_host: nsxmgr-01.haas-408.pez.pivotal.io

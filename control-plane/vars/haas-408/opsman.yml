@@ -2,7 +2,7 @@ dns: 10.192.2.10,10.192.2.11
 ntp: time.svc.pivotal.io
 gateway: 192.168.4.1
 network_name: control-plane
-opsman_host_name: opsman-cp.haas-408.pez.pivotal.io
+opsman_host_name: opsmgr-cp.haas-408.pez.pivotal.io
 opsman_netmask: 255.255.255.0
 opsman_private_ip: 192.168.4.10
 opsman_vm_name: control-plane-opsman
