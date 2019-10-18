@@ -112,7 +112,7 @@ resource "nsxt_lb_tcp_virtual_server" "concourse_uaa_lb_virtual_server" {
   description                = "concourse uaa lb_virtual_server provisioned by terraform"
   display_name               = "concourse uaa virtual server"
   application_profile_id     = "${nsxt_lb_fast_tcp_application_profile.tcp_profile.id}"
-  ip_address                 = "${var.concourse_vip_server}"
+  ip_address                 = "${var.uaa_vip_server}"
   ports                      = ["8443"]
   pool_id                    = "${nsxt_lb_pool.concourse_uaa_lb_pool.id}"
 }
@@ -121,7 +121,7 @@ resource "nsxt_lb_tcp_virtual_server" "concourse_credhub_lb_virtual_server" {
   description                = "concourse credhub lb_virtual_server provisioned by terraform"
   display_name               = "concourse credhub virtual server"
   application_profile_id     = "${nsxt_lb_fast_tcp_application_profile.tcp_profile.id}"
-  ip_address                 = "${var.concourse_vip_server}"
+  ip_address                 = "${var.credhub_vip_server}"
   ports                      = ["8844"]
   pool_id                    = "${nsxt_lb_pool.concourse_credhub_lb_pool.id}"
 }

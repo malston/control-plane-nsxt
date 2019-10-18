@@ -110,6 +110,7 @@ instance_groups:
     name: ((network_name))
   properties: {}
   stemcell: default
+  vm_extensions: [uaa-lb]
   update:
     max_in_flight: 1
   vm_type: ((vm_type))
@@ -200,6 +201,7 @@ instance_groups:
     - gateway
     name: ((network_name))
   properties: {}
+  vm_extensions: [concourse-lb]
   stemcell: default
   update:
     max_in_flight: 1
@@ -370,6 +372,7 @@ instance_groups:
     release: credhub
   lifecycle: service
   name: credhub
+  vm_extensions: [credhub-lb]
   networks:
   - default:
     - dns
@@ -383,7 +386,7 @@ instance_groups:
 name: control-plane
 releases:
 - name: concourse
-  version: 4.2.4
+  version: 4.2.6
 - name: garden-runc
   version: 1.19.1
 - name: postgres

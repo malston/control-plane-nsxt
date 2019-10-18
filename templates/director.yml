@@ -48,7 +48,15 @@ vmextensions-configuration:
 - name: concourse-lb
   cloud_properties:
     nsxt:
-      ns_groups: ["concourse_web_ns_group", "concourse_uaa_ns_group", "concourse_credhub_ns_group"]
+      ns_groups: ["concourse_web_ns_group"]
+- name: uaa-lb
+  cloud_properties:
+    nsxt:
+      ns_groups: ["concourse_uaa_ns_group"]
+- name: credhub-lb
+  cloud_properties:
+    nsxt:
+      ns_groups: ["concourse_credhub_ns_group"]
 - name: minio-lb
   cloud_properties:
     nsxt:

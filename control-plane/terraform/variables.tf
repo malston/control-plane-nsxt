@@ -65,6 +65,17 @@ variable "concourse_vip_server" {
   type        = "string"
 }
 
+variable "credhub_vip_server" {
+  default     = ""
+  description = "IP Address for credhub loadbalancer"
+  type        = "string"
+}
+
+variable "uaa_vip_server" {
+  default     = ""
+  description = "IP Address for uaa loadbalancer"
+  type        = "string"
+}
 variable "minio_vip_server" {
   default     = ""
   description = "IP Address for minio loadbalancer"

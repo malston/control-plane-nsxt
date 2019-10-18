@@ -1,5 +1,5 @@
 dns: 10.192.2.10,10.192.2.11
-ntp: time.svc.pivotal.io
+ntp: 10.192.2.6,10.87.8.5,10.64.0.5,10.192.2.5
 gateway: 192.168.4.1
 network_name: control-plane
 opsman_host_name: opsmgr-cp.haas-408.pez.pivotal.io
