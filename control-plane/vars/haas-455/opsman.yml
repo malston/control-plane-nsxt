@@ -1,0 +1,15 @@
+dns: 10.192.2.10,10.192.2.11
+ntp: 10.192.2.6,10.87.8.5,10.64.0.5,10.192.2.5
+gateway: 192.168.4.1
+network_name: control-plane
+opsman_host_name: opsmgr-cp.haas-455.pez.pivotal.io
+opsman_netmask: 255.255.255.0
+opsman_private_ip: 192.168.4.10
+opsman_vm_name: control-plane-opsman
+vsphere_datacenter: Datacenter
+vsphere_datastore: LUN01
+vsphere_folder: control-plane-vms
+vsphere_host_name: vcsa-01.haas-455.pez.pivotal.io
+vsphere_resource_pool: control-plane
+vsphere_cluster: Cluster
+glob: "*.ova"
