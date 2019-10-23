@@ -20,7 +20,7 @@ function install_terraform {
 }
 
 function install_pivnet_cli {
-  version="${PIVNET_VERSION:-0.0.67}"
+  version="${PIVNET_VERSION:-0.0.69}"
   os="${OS:-linux}"
   arch="${ARCH:-amd64}"
   file="pivnet"

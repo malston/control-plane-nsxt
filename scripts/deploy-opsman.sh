@@ -4,17 +4,17 @@ set -eux
 
 STATE_DIRECTORY=./control-plane/state/${ENVIRONMENT_NAME}
 
-touch ${STATE_DIRECTORY}/state.yml
+touch "${STATE_DIRECTORY}/state.yml"
 
 bosh interpolate ./templates/opsman.yml \
   --vars-env OM \
-  --vars-file ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml \
+  --vars-file "./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml" \
   > /tmp/opsman.yml
 
-if [ ! -f ${STATE_DIRECTORY}/sshkey ]; then
-      ssh-keygen -b 2048 -t rsa -f ${STATE_DIRECTORY}/sshkey -q -N ""
+if [ ! -f "${STATE_DIRECTORY}/sshkey" ]; then
+      ssh-keygen -b 2048 -t rsa -f "${STATE_DIRECTORY}/sshkey" -q -N ""
 fi
-export SSH_PUBLIC_KEY=$(cat ${STATE_DIRECTORY}/sshkey.pub)
+export SSH_PUBLIC_KEY=$(cat "${STATE_DIRECTORY}/sshkey.pub")
 rp=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml --path /vsphere_resource_pool)
 dc=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml --path /vsphere_datacenter)
 cluster=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml --path /vsphere_cluster)
@@ -58,4 +58,3 @@ govc import.spec ./downloads/ops-manager-vsphere-*.ova \
 
 govc import.ova --options=/tmp/opsman_ova.json \
    ./downloads/ops-manager-vsphere-*.ova \
-
