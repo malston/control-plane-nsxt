@@ -43,3 +43,5 @@ source .envrc
 - Run `./scripts/download-opsman.yml`
 - Run `./scripts/deploy-opsman.yml`
 - Verify that the opsmanager is online and accessible.
+- Run `./scripts/download-control-plane.sh` to download releases control plane from pivnet
+- Finally run `./scripts/deploy-control-plane.sh` to deploy the control plane.
