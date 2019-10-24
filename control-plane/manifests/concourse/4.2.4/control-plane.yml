@@ -103,6 +103,7 @@ instance_groups:
     release: bpm
   lifecycle: service
   name: uaa
+  vm_extensions: ["uaa-lb"]
   networks:
   - default:
     - dns
@@ -110,7 +111,6 @@ instance_groups:
     name: ((network_name))
   properties: {}
   stemcell: default
-  vm_extensions: [uaa-lb]
   update:
     max_in_flight: 1
   vm_type: ((vm_type))
@@ -120,7 +120,6 @@ instance_groups:
   - consumes: {}
     name: atc
     properties:
-      add_local_users: []
       bind_port: 80
       credhub:
         client_id: concourse_to_credhub
@@ -128,8 +127,7 @@ instance_groups:
         tls:
           ca_cert:
             certificate: ((control-plane-ca.certificate))
-        url: ((credhub_url))
-      encryption_key: ((web_encryption_key))
+        url: https://credhub.example.com
       external_url: ((external_url))
       generic_oauth:
         auth_url: ((uaa_url))/oauth/authorize
@@ -143,8 +141,6 @@ instance_groups:
       log_level: debug
       main_team:
         auth:
-          local:
-            users: []
           oauth:
             users:
             - admin
@@ -154,7 +150,6 @@ instance_groups:
         role:
           name: concourse
           password: ((postgres_password))
-        ssl-mode: verify-ca
       tls_bind_port: 443
       tls_cert: ((control-plane-tls.certificate))
       tls_key: ((control-plane-tls.private_key))
@@ -170,38 +165,15 @@ instance_groups:
       token_signing_key: ((token_signing_key))
     provides: {}
     release: concourse
-  - consumes: {}
-    name: database-backup-restorer
-    provides: {}
-    release: backup-and-restore-sdk
-  - consumes:
-      concourse_db: nil
-    name: bbr-atcdb
-    properties:
-      postgresql:
-        database: atc
-        host: db.service.cf.internal
-        port: 5432
-        role:
-          name: concourse
-          password: ((postgres_password))
-        tls:
-          cert:
-            ca: fake-ops-manager-ca-certificate
-            certificate: ""
-            private_key: ""
-          enabled: true
-    provides: {}
-    release: concourse
   lifecycle: service
   name: web
+  vm_extensions: ["concourse-lb"]
   networks:
   - default:
     - dns
     - gateway
     name: ((network_name))
   properties: {}
-  vm_extensions: [concourse-lb]
   stemcell: default
   update:
     max_in_flight: 1
@@ -321,9 +293,7 @@ instance_groups:
         ca_certificate: ((control-plane-ca.certificate))
         data_storage:
           database: credhub
-          host: db.service.cf.internal
           password: ((credhub_db_password))
-          port: 5432
           require_tls: true
           tls_ca: ((control-plane-ca.certificate))
           type: postgres
@@ -347,32 +317,9 @@ instance_groups:
     name: bpm
     provides: {}
     release: bpm
-  - consumes: {}
-    name: database-backup-restorer
-    provides: {}
-    release: backup-and-restore-sdk
-  - consumes: {}
-    name: bbr-credhubdb
-    properties:
-      postgresql:
-        database: atc
-        host: db.service.cf.internal
-        port: 5432
-        role:
-          name: concourse
-          password: ((postgres_password))
-        tls:
-          cert:
-            ca: fake-ops-manager-ca-certificate
-            certificate: ""
-            private_key: ""
-          enabled: true
-      release_level_backup: true
-    provides: {}
-    release: credhub
   lifecycle: service
   name: credhub
-  vm_extensions: [credhub-lb]
+  vm_extensions: ["credhub-lb"]
   networks:
   - default:
     - dns
@@ -394,13 +341,11 @@ releases:
 - name: credhub
   version: 2.4.0
 - name: uaa
-  version: 73.7.0
+  version: 73.3.0
 - name: bosh-dns-aliases
   version: 0.0.3
 - name: bpm
   version: 1.1.0
-- name: backup-and-restore-sdk
-  version: 1.16.0
 stemcells:
 - alias: default
   os: ubuntu-xenial
@@ -439,10 +384,6 @@ variables:
   type: rsa
 - name: worker_key
   type: ssh
-- name: web_encryption_key
-  options:
-    length: 16
-  type: password
 - name: control-plane-ca
   options:
     common_name: controlplaneca
@@ -466,5 +407,4 @@ variables:
   type: password
 - name: uaa_scim_user_password
   type: password
-
 

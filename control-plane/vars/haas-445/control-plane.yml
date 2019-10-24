@@ -1,0 +1,9 @@
+---
+external_url: https://plane.haas-445.pez.pivotal.io
+persistent_disk_type: 10240
+network_name: control-plane
+azs: [AZ1]
+wildcard_domain: "*.haas-445.pez.pivotal.io"
+uaa_url: https://uaa.haas-445.pez.pivotal.io
+credhub_url: https://credhub.haas-445.pez.pivotal.io
+vm_type: large.disk
