@@ -31,8 +31,8 @@ bosh login
 #   bosh upload-release uaa-release-*.tgz
 # popd > /dev/null
 
-export CP_ca_cert=$(om --env /tmp/env.yml certificate-authorities --format json | jq -r '.[0] | select(.active==true) | .cert_pem' )
+# export CP_ca_cert=$(om --env /tmp/env.yml certificate-authorities --format json | jq -r '.[0] | select(.active==true) | .cert_pem' )
 
 bosh deploy --non-interactive -d control-plane ./control-plane/manifests/concourse/4.2.4/control-plane.yml \
-    --vars-file=./control-plane/vars/${ENVIRONMENT_NAME}/control-plane.yml \
-    --vars-env CP
+    --vars-file=./control-plane/vars/${ENVIRONMENT_NAME}/control-plane.yml
+#    --vars-env CP

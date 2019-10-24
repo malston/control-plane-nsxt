@@ -127,12 +127,13 @@ instance_groups:
         tls:
           ca_cert:
             certificate: ((control-plane-ca.certificate))
-        url: https://credhub.example.com
+        url: ((credhub_url))
       external_url: ((external_url))
       generic_oauth:
         auth_url: ((uaa_url))/oauth/authorize
         ca_cert:
-          certificate: ((ca_cert))
+          #certificate: ((ca_cert))
+          certificate: ((control-plane-ca.certificate))
         client_id: concourse
         client_secret: ((concourse_client_secret))
         display_name: UAA

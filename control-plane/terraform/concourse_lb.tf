@@ -49,6 +49,7 @@ resource "nsxt_lb_pool" "concourse_web_lb_pool" {
     type          = "SNAT_AUTO_MAP"
   }
   member_group {
+    port = "443"
     grouping_object {
       target_type = "NSGroup"
       target_id   = "${nsxt_ns_group.concourse_web_ns_group.id}"
@@ -69,6 +70,7 @@ resource "nsxt_lb_pool" "concourse_uaa_lb_pool" {
     type          = "SNAT_AUTO_MAP"
   }
   member_group {
+    port = "8443"
     grouping_object {
       target_type = "NSGroup"
       target_id   = "${nsxt_ns_group.concourse_uaa_ns_group.id}"
@@ -88,6 +90,7 @@ resource "nsxt_lb_pool" "concourse_credhub_lb_pool" {
     type          = "SNAT_AUTO_MAP"
   }
   member_group {
+    port = "8844"
     grouping_object {
       target_type = "NSGroup"
       target_id   = "${nsxt_ns_group.concourse_credhub_ns_group.id}"
@@ -113,7 +116,7 @@ resource "nsxt_lb_tcp_virtual_server" "concourse_uaa_lb_virtual_server" {
   display_name               = "concourse uaa virtual server"
   application_profile_id     = "${nsxt_lb_fast_tcp_application_profile.tcp_profile.id}"
   ip_address                 = "${var.uaa_vip_server}"
-  ports                      = ["8443"]
+  ports                      = ["443"]
   pool_id                    = "${nsxt_lb_pool.concourse_uaa_lb_pool.id}"
 }
 
@@ -122,7 +125,7 @@ resource "nsxt_lb_tcp_virtual_server" "concourse_credhub_lb_virtual_server" {
   display_name               = "concourse credhub virtual server"
   application_profile_id     = "${nsxt_lb_fast_tcp_application_profile.tcp_profile.id}"
   ip_address                 = "${var.credhub_vip_server}"
-  ports                      = ["8844"]
+  ports                      = ["443"]
   pool_id                    = "${nsxt_lb_pool.concourse_credhub_lb_pool.id}"
 }
 

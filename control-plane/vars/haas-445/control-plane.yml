@@ -7,3 +7,4 @@ wildcard_domain: "*.haas-445.pez.pivotal.io"
 uaa_url: https://uaa.haas-445.pez.pivotal.io
 credhub_url: https://credhub.haas-445.pez.pivotal.io
 vm_type: large.disk
+
