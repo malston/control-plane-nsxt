@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eu
+set -e
 
 
 echo "Obtain bosh credentials"
@@ -17,4 +17,4 @@ eval "$(om --env /tmp/env.yml bosh-env)"
 
 private_key=${PWD}/control-plane/state/${ENVIRONMENT_NAME}/sshkey
 export BOSH_ALL_PROXY="ssh+socks5://ubuntu@${OM_opsman_host_name}:22?private-key=${private_key}"
-
+export CREDHUB_PROXY=$BOSH_ALL_PROXY
