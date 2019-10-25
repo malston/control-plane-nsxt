@@ -1,4 +1,4 @@
-# Deploy Control Plane and PKS
+# Deploy Control Plane onto NSX-T
 
 This repo contains scripts and terraform configurations to deploy a control
 plane, opsmanager and PKS to NSX-T. It assumes that NSX-T has been installed
