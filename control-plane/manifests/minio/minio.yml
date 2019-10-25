@@ -1,0 +1,65 @@
+---
+name: minio
+
+releases:
+- name: minio
+  version: ((version))
+
+stemcells:
+- alias: default
+  os: ubuntu-xenial
+  version: latest
+
+variables:
+- name: minio_accesskey
+  type: password
+- name: minio_secretkey
+  type: password
+- name: minio_internal_ca
+  options:
+    common_name: internalCA
+    is_ca: true
+  type: certificate
+- name: minio_tls
+  options:
+    alternative_names:
+    - ((external_host))
+    - minio-server.service.cf.internal
+    - "*.minio-server.service.cf.internal"
+    ca: minio_internal_ca
+    common_name: ((external_host))
+  type: certificate
+
+instance_groups:
+- name: minio
+  vm_extensions: ["minio-lb"]
+  azs: ((azs))
+  instances: 1
+  jobs:
+  - name: minio-server
+    release: minio
+    templates:
+    - name: minio-server
+    properties:
+      ca_cert: ((minio_internal_ca.certificate))
+      dns_alias: minio-server.service.cf.internal
+      credential:
+        accesskey: ((minio_accesskey))
+        secretkey: ((minio_secretkey))
+      port: 443
+      server_cert: ((minio_tls.certificate))
+      server_key: ((minio_tls.private_key))
+  networks:
+  - name: control-plane
+  vm_type: large.disk
+  persistent_disk_type: 204800
+  stemcell: default
+  vm_extensions: [minio-lb]
+
+update:
+  canaries: 1
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+  max_in_flight: 1
+
+

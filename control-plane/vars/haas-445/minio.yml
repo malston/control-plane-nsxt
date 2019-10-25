@@ -1,0 +1,5 @@
+azs:
+ - AZ1
+external_host: minio.haas-445.pez.pivotal.io
+static_web_ips:
+ -10.197.84.203
