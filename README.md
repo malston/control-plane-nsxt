@@ -32,7 +32,7 @@ source .envrc
 ### Control Plane
 
 - Run `./scripts/init.sh` to install required tools
-- Create a Resource pool in the `Cluster` called `control-plane`
+- Create a Resource pool called `control-plane` in the `Cluster` cluster
 - Create a `VM and Template` `folder` under `Datacenter` called
   `control-plane-vms`
 - Update `./versions.yml` to use latest versions
