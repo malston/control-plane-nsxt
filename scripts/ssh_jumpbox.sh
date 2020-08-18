@@ -1,3 +1,3 @@
 #!/bin/bash
 set -eu
-sshpass -p "$PEZ_PASSWORD" ssh "$PEZ_JUMPBOX"
+sshpass -p "$JB_PASSWORD" ssh "$JB_HOSTNAME" -l "$JB_USER"

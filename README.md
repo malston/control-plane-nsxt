@@ -8,8 +8,9 @@ and configured with a T0 Router.
 
 ```sh
 cat > .envrc <<EOF
-export PEZ_PASSWORD=<password>
-export PEZ_JUMPBOX=
+export JB_USER=ubuntu
+export JB_PASSWORD=<password>
+export JB_HOSTNAME=jumpbox.example.com
 export PIVNET_TOKEN=<pivnet_token>
 export VSPHERE_PASSWORD=<password>
 export VSPHERE_USER=administrator@vsphere.local
