@@ -1,10 +1,10 @@
 # Deploy Control Plane onto NSX-T
 
 This repo contains scripts and terraform configurations to deploy a control
-plane, opsmanager and PKS to NSX-T. It assumes that NSX-T has been installed
+plane, Ops Manager and Concourse to NSX-T. It assumes that NSX-T has been installed
 and configured with a T0 Router.
 
-### Setup Variables
+## Setup Variables
 
 ```sh
 cat > .envrc <<EOF
@@ -26,11 +26,11 @@ EOF
 
 Run the following source command to set the environment variables into your shell or install [direnv](https://direnv.net/) to do this automatically.
 
-```
+```sh
 source .envrc
 ```
 
-### Control Plane
+## Control Plane
 
 - Run `./scripts/init.sh` to install required tools
 - Create a Resource pool called `control-plane` in the `Cluster` cluster
@@ -41,8 +41,8 @@ source .envrc
 - run `./scripts/terraform-control-plane-apply.sh` - this will create the
   infrastructure required in NSX-T for a control-plane, mainly the T1 router.
 - Update `opsman.yml` and `director.yml` in the control-plane vars directory.
-- Run `./scripts/download-opsman.yml`
-- Run `./scripts/deploy-opsman.yml`
-- Verify that the opsmanager is online and accessible.
+- Run `./scripts/download-opsman.sh`
+- Run `./scripts/deploy-opsman.sh`
+- Verify that Ops Manager is online and accessible.
 - Run `./scripts/download-control-plane.sh` to download releases control plane from pivnet
 - Finally run `./scripts/deploy-control-plane.sh` to deploy the control plane.
