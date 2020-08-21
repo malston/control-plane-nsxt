@@ -15,4 +15,4 @@ worker_vm_type: large
 # This assigns created VMs (web, worker, and db) to AZs in the IaaS
 azs: [ AZ1 ]
 # The network name to assign the VMs to.
-network_name: haas-439-Infrastructure
+network_name: control-plane
