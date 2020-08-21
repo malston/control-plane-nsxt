@@ -1,0 +1,9 @@
+---
+external_url: https://concourse.haas-439.pez.vmware.com
+persistent_disk_type: 10240
+network_name: haas-439-Infrastructure
+azs: [AZ1]
+wildcard_domain: "*.haas-439.pez.vmware.com"
+uaa_url: https://uaa.haas-439.pez.vmware.com
+credhub_url: https://credhub.haas-439.pez.vmware.com
+vm_type: large.disk

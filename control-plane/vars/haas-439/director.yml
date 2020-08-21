@@ -1,0 +1,7 @@
+availability_zone: AZ1
+bosh_disk_path: control-plane-disks
+bosh_post_deploy_enabled: true
+bosh_template_folder: control-plane-templates
+internal_cidr: 172.16.0.0/24
+reserved_ip_ranges: 172.16.0.1-172.16.0.10
+nsx_host: nsxmgr-01.haas-439.pez.vmware.com

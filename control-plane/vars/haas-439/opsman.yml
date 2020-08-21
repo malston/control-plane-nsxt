@@ -1,0 +1,15 @@
+dns: 10.192.2.10,10.192.2.11
+ntp: 10.192.2.10,10.192.2.11
+gateway: 172.16.0.1
+network_name: haas-439-Infrastructure
+opsman_host_name: opsmgr-cp.haas-439.pez.vmware.com
+opsman_netmask: 255.255.255.0
+opsman_private_ip: 172.16.0.10
+opsman_vm_name: control-plane-opsman
+vsphere_datacenter: Datacenter
+vsphere_datastore: LUN01
+vsphere_folder: control-plane-vms
+vsphere_host_name: vcsa-01.haas-439.pez.vmware.com
+vsphere_resource_pool: control-plane
+vsphere_cluster: Cluster
+glob: "*.ova"
