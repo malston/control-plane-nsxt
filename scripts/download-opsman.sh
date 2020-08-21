@@ -4,6 +4,8 @@ set -eu
 
 version=$(om interpolate --config ./versions.yml --path /opsman_version)
 
+mkdir -p ./downloads
+
 pushd ./downloads > /dev/null
   pivnet login --api-token $PIVNET_TOKEN
   pivnet download-product-files -p ops-manager -r ${version} -g "ops-manager-vsphere-*.ova"

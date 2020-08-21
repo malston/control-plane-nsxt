@@ -1,4 +1,4 @@
-opsman_version: 2.7.1
-concourse_stemcell_version: "315.70"
-platform_automation_engine_version: 1.0.5-beta.1
-minio_version: 2018-12-27T18-33-08Z
+opsman_version: 2.10.0
+concourse_stemcell_version: "621.81"
+concourse_version: "5.5.11 Platform Automation"
+minio_version: 2020-08-18T19-41-00Z

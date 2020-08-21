@@ -48,7 +48,7 @@ vmextensions-configuration:
 - name: concourse-lb
   cloud_properties:
     nsxt:
-      ns_groups: ["concourse_web_ns_group"]
+      ns_groups: ["haas-439_concourse_ns_group"]
 - name: uaa-lb
   cloud_properties:
     nsxt:

@@ -15,8 +15,22 @@ function install_terraform {
   terraform --version
 }
 
+function install_govc {
+  version="${GOVC_VERSION:-v0.20.0}"
+  os="${OS:-linux}"
+  arch="${ARCH:-amd64}"
+  file="govc"
+  URL_TO_BINARY="https://github.com/vmware/govmomi/releases/download/${version}/govc_${os}_${arch}.gz"
+  trap "{ rm -f $file ; exit 255; }" EXIT
+  wget $URL_TO_BINARY
+  gunzip govc_${os}_${arch}.gz
+  chmod +x govc_${os}_${arch}
+  sudo mv govc_${os}_${arch} /usr/local/bin/$file
+  type $file
+}
+
 function install_pivnet_cli {
-  version="${PIVNET_VERSION:-1.0.2}"
+  version="${PIVNET_VERSION:-1.0.4}"
   os="${OS:-linux}"
   arch="${ARCH:-amd64}"
   file="pivnet"
@@ -210,6 +224,7 @@ if [[ $OS == linux ]]; then
 fi
 
 install_terraform
+install_govc
 install_pivnet_cli
 install_jq
 install_om
