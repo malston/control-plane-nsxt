@@ -49,6 +49,6 @@ bosh -n -d concourse deploy "${base_dir}/downloads/concourse-bosh-deployment/clu
   -o "${base_dir}/downloads/concourse-bosh-deployment/cluster/operations/secure-internal-postgres-bbr.yml" \
   -o "${base_dir}/downloads/concourse-bosh-deployment/cluster/operations/secure-internal-postgres-uaa.yml" \
   -o "${base_dir}/downloads/concourse-bosh-deployment/cluster/operations/secure-internal-postgres-credhub.yml" \
-  -o operations.yml \
+  -o "${base_dir}/control-plane/vars/${ENVIRONMENT_NAME}/operations.yml" \
   -l "${base_dir}/control-plane/vars/${ENVIRONMENT_NAME}/concourse.yml" \
   -l "${base_dir}/downloads/concourse-bosh-deployment/versions.yml"
