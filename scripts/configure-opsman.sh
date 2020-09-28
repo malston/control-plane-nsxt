@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -eux
-
 export NSX_HOST=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/director.yml --path /nsx_host)
 
 export OM_opsman_host_name=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml --path /opsman_host_name)
