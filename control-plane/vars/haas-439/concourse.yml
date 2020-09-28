@@ -9,7 +9,7 @@ external_url: https://concourse.haas-439.pez.vmware.com
 # This can be any VM type from the cloud config: bosh cloud-config
 db_vm_type: large
 # This can be any disk type from the cloud config: bosh cloud-config
-db_persistent_disk_type: 102400
+db_persistent_disk_type: 204800
 # This can be any VM type from the cloud config: bosh cloud-config
 worker_vm_type: large
 # This assigns created VMs (web, worker, and db) to AZs in the IaaS
