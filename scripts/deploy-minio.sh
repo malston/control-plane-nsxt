@@ -2,8 +2,8 @@
 
 set -eux
 
-
-echo "Obtain bosh credentials"
+__DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+base_dir="${__DIR}/.."
 
 export OM_opsman_host_name=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml --path /opsman_host_name)
 export OM_opsman_user=$OPSMAN_USER
