@@ -11,8 +11,11 @@ db_vm_type: large
 # This can be any disk type from the cloud config: bosh cloud-config
 db_persistent_disk_type: 204800
 # This can be any VM type from the cloud config: bosh cloud-config
-worker_vm_type: large
+worker_vm_type: large.disk
 # This assigns created VMs (web, worker, and db) to AZs in the IaaS
 azs: [ AZ1 ]
 # The network name to assign the VMs to.
 network_name: control-plane
+
+web_instances: 1
+worker_instances: 3

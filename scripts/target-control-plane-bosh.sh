@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 export OM_opsman_host_name=$(bosh int ./control-plane/vars/${ENVIRONMENT_NAME}/opsman.yml --path /opsman_host_name)
 export OM_opsman_user=$OPSMAN_USER
 export OM_opsman_password=$OPSMAN_PASSWORD
