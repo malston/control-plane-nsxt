@@ -26,6 +26,6 @@ pushd ./downloads > /dev/null
   bosh upload-release minio-boshrelease-*.tgz
 popd > /dev/null
 
-bosh deploy --non-interactive -d minio ./control-plane/manifests/minio/minio.yml \
-    --vars-file=./control-plane/vars/${ENVIRONMENT_NAME}/minio.yml \
+bosh deploy --non-interactive -d minio "${base_dir}/control-plane/manifests/minio/minio.yml"\
+    --vars-file="${base_dir}/control-plane/vars/${ENVIRONMENT_NAME}/minio.yml" \
     -v version=${minio_version}
