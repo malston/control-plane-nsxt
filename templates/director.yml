@@ -63,4 +63,4 @@ vmextensions-configuration:
       ns_groups: ["minio_ns_group"]
 - name: increased-disk
   cloud_properties:
-    disk: 65536
+    disk: 262144
