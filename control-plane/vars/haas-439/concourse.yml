@@ -17,5 +17,17 @@ azs: [ AZ1 ]
 # The network name to assign the VMs to.
 network_name: control-plane
 
+# Scale instances
 web_instances: 1
 worker_instances: 3
+
+# Enable audit logs
+enable_build_audit_log: true
+enable_container_audit_log: true
+enable_job_audit_log: true
+enable_pipeline_audit_log: true
+enable_resource_audit_log: true
+enable_system_audit_log: true
+enable_team_audit_log: true
+enable_volume_audit_log: true
+enable_worker_audit_log: true

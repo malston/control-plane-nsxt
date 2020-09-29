@@ -36,6 +36,7 @@ credhub set \
 bosh login
 
 bosh -n -d concourse deploy "${base_dir}/downloads/concourse-bosh-deployment/cluster/concourse.yml" \
+  -o "${base_dir}/downloads/concourse-bosh-deployment/cluster/operations/audit.yml" \
   -o "${base_dir}/downloads/concourse-bosh-deployment/cluster/operations/privileged-http.yml" \
   -o "${base_dir}/downloads/concourse-bosh-deployment/cluster/operations/privileged-https.yml" \
   -o "${base_dir}/downloads/concourse-bosh-deployment/cluster/operations/basic-auth.yml" \
